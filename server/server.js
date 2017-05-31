@@ -8,6 +8,7 @@ var {User} = require('./models/user');
 
 var app = express();
 const port = process.env.PORT || 3000;
+// fixed port typo
 
 // middleware
 app.use(bodyParser.json());
