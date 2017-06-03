@@ -115,6 +115,16 @@ app.post('/users', (req, res) => {
   });
 });
 
+// JUST FOR TESTING PURPOSES MUST DELETE ///////////////////////////////////////////////
+// GET /todos
+app.get('/users', (req, res) => {
+  User.find().then((users) => {
+    res.send({users});
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
 // GET /users/me
 app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
