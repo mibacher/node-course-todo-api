@@ -13,7 +13,7 @@ const users = [{
   password: 'userOnePass',
   tokens: [{
     access: 'auth',
-    token: jwt.sign({_id: userOneId, access: 'auth'}, 'abc123').toString()
+    token: jwt.sign({_id: userOneId, access: 'auth'}, process.env.JWT_SECRET).toString()
   }]
 }, {
   _id: userTwoId,
@@ -21,7 +21,7 @@ const users = [{
   password: 'userTwoPass',
   tokens: [{
     access: 'auth',
-    token: jwt.sign({_id: userTwoId, access: 'auth'}, 'abc123').toString()
+    token: jwt.sign({_id: userTwoId, access: 'auth'}, process.env.JWT_SECRET).toString()
   }]
 }];
 // dummy todos for testing
@@ -51,10 +51,5 @@ const populateUsers = (done) => {
     return Promise.all([userOne, userTwo]);
   }).then(() => done());
 };
-
-// console.log('todos:', {todos});
-// console.log('users:', {users});
-// console.log('todo._creator: ', todos[0]._creator, ' , user._id: ', users[0]._id);
-// console.log('todo._creator: ', todos[1]._creator, ' , user._id: ', users[1]._id);
 
 module.exports = {todos, populateTodos, users, populateUsers};
